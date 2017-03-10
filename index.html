@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Black Jack</title>
+    <!-- CSS Reset -->
+    <link rel="stylesheet" href="css/reset.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Cinzel:400,700,900" rel="stylesheet">
+      <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- Javascript -->
+    <script src="js/jquery.js" charset="utf-8"></script>
+    <script src="js/main.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <main>
+      <section class="top">
+        <div class="deckImage">
+          <img src="img/card-back-red.png" alt="" class="deck">
+        </div>
+        <section class="dealer">
+          <div class="cardArea" id="dealerCards"></div>
+          <h2>Dealer</h2>
+        </section>
+        <div class="topSpace"></div>
+      </section>
+      <section class="middle">
+        <h1>Blackjack</h1>
+      </section>
+      <section class="bottom">
+        <section class="player playerOne">
+          <h2>Player 1</h2>
+          <div class="cardArea" id="playerOneCards"></div>
+          <button type="button" name="hit" class="hit" id="playerOneHit">Hit Me!</button>
+          <button type="button" name="stand" class="stand" id="playerOneStand">Stand</button>
+        </section>
+        <section class="player playerTwo">
+          <h2>Player 2</h2>
+          <div class="cardArea" id="playerTwoCards"></div>
+          <button type="button" name="hit" class="hit" id="playerTwoHit">Hit Me!</button>
+          <button type="button" name="stand" class="stand" id="playerTwoStand">Stand</button>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

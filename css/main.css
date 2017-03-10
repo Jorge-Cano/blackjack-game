@@ -1,0 +1,51 @@
+body {
+  background-color: rgba(0,129,10,1);
+  font-family: 'Cinzel', serif;
+  text-align: center;
+}
+main {
+  padding: 2em 1em;
+
+}
+h1 {
+  font-size: 12em;
+  font-weight: 900;
+  color: rgba(255,255,255,.2);
+  margin: .1em 0;
+}
+h2 {
+font-weight: 700;
+font-size: 3em;
+}
+section.top {
+  display: flex;
+  -webkit-flex-flow: row;
+  flex-direction: row;
+  justify-content: space-between;
+}
+div.deckImage, div.topSpace {
+  flex: 1 max-content;
+  height: 12em;
+  width: 8em;
+}
+img.deck {
+  height: 100%;
+  width: 100%;
+}
+section.dealer {
+flex: max-content;
+}
+.cardArea {
+  height: 13em;
+  width: 15em;
+}
+section.middle {
+  flex: 1 100%;
+}
+section.bottom {
+  display: flex;
+  justify-content: center;
+}
+section.player {
+  margin: 0 10em;
+}
