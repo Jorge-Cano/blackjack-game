@@ -28,16 +28,23 @@ div.deckImage, div.topSpace {
   height: 12em;
   width: 8em;
 }
+div.deckImage {
+  box-shadow: 3px 3px 5px black;
+  border: black 1px;
+  border-style: solid;
+  border-radius: 5px;
+}
 img.deck {
   height: 100%;
   width: 100%;
+  border-radius: 5px;
 }
 section.dealer {
 flex: max-content;
 }
 .cardArea {
   height: 13em;
-  width: 15em;
+  width: 60em;
 }
 section.middle {
   flex: 1 100%;
@@ -48,4 +55,20 @@ section.bottom {
 }
 section.player {
   margin: 0 10em;
+}
+div.card {
+  height: 12em;
+  width: 8em;
+  background-color: white;
+  box-shadow: 3px 3px 5px black;
+  display: inline-block;
+  border: black 1px;
+  border-style: solid;
+  border-radius: 5px;
+  font-size: 1em;
+  font-weight: 400;
+  position: relative;
+}
+#deckCard {
+  display: none;
 }
