@@ -17,6 +17,12 @@ h2 {
 font-weight: 700;
 font-size: 3em;
 }
+h4 {
+  font-size: 2em;
+}
+h5 {
+  font-size: 1.75em;
+}
 section.top {
   display: flex;
   -webkit-flex-flow: row;
@@ -68,7 +74,22 @@ div.card {
   font-size: 1em;
   font-weight: 400;
   position: relative;
+  align-items: center;
 }
 #deckCard {
   display: none;
+}
+#dealerFirstCard {
+  background-size: cover;
+}
+.counters {
+  padding-right: 2em;
+}
+button {
+  background-color: rgba(0,129,10,1);
+  border-radius: 10px;
+  border-color: black;
+  border-width: thin;
+  font-family: 'Cinzel', serif;
+  font-size: 1.5em;
 }
