@@ -28,7 +28,7 @@ $(function() {
   var shuffledCards = []; // deck shuffled
 //make shuffled deck of cards
   function deck_of_cards() {
-    var values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace'];
+    var values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'];
     var suits = ['hearts', 'diamonds', 'clubs', 'spades'];
 
     for (var i=0; i<suits.length; i++) {
@@ -57,14 +57,22 @@ var pushes=0;
 
 //deal the cards
 $('#dealButton').click(function() {
+  $('h1').css('color', 'rgba(255,255,255,.2)');
   $('.cardArea').empty();
   $('#playerOneHit').show();
   $('#playerOneStand').show();
+  $('#dealButton').css('visibility', 'hidden');;
+  $('#pushesText').css('color', 'black').css('font-weight', '400');
+  $('#lossesText').css('color', 'black').css('font-weight', '400');
+  $('#winsText').css('color', 'black').css('font-weight', '400');
+  $('.newShuffle').css('visibility','hidden');
   handDealer=[];
   handPlayerOne=[];
+  console.log(shuffledCards.length);
   //check how much of deck is left
   if(shuffledCards.length<20) {
     deck_of_cards();
+    $('.newShuffle').css('visibility','visible');
   };
   //first card for each
     handPlayerOne.push(shuffledCards[0]);
@@ -72,12 +80,20 @@ $('#dealButton').click(function() {
     $card.clone().css('display','inline-block').appendTo('#playerOneCards');
     $('#playerOneCards h3.suit').eq(0).text(handPlayerOne[0].suit);
     $('#playerOneCards h3.value').eq(0).text(handPlayerOne[0].value);
+    //change suit color
+    if (handPlayerOne[0].suit=='diamonds' || handPlayerOne[0].suit=='hearts') {
+      $('#playerOneCards .card').eq(0).css('color', 'red');
+    };
     handDealer.push(shuffledCards[0]);
     shuffledCards.shift();
     $card.clone().css('display','inline-block').appendTo('#dealerCards').attr('id', 'dealerFirstCard');
     $('#dealerCards h3.suit').eq(0).text(handDealer[0].suit).hide();
     $('#dealerCards h3.value').eq(0).text(handDealer[0].value).hide();
     $('#dealerFirstCard').eq(0).css('background-image', 'url(img/card-back-red.png)');
+    //change suit color
+    if (handDealer[0].suit=='diamonds' || handDealer[0].suit=='hearts') {
+      $('#dealerCards .card').eq(0).css('color', 'red');
+    };
 
 
   //second card for each
@@ -86,11 +102,19 @@ $('#dealButton').click(function() {
     $card.clone().css('display','inline-block').appendTo('#playerOneCards');
     $('#playerOneCards h3.suit').eq(1).text(handPlayerOne[1].suit);
     $('#playerOneCards h3.value').eq(1).text(handPlayerOne[1].value);
+    //change suit color
+    if (handPlayerOne[1].suit=='diamonds' || handPlayerOne[1].suit=='diamonds') {
+      $('#playerOneCards .card').eq(1).css('color', 'red');
+    };
     handDealer.push(shuffledCards[0]);
     shuffledCards.shift();
     $card.clone().css('display','inline-block').appendTo('#dealerCards');
     $('#dealerCards h3.suit').eq(1).text(handDealer[1].suit);
     $('#dealerCards h3.value').eq(1).text(handDealer[1].value);
+    //change suit color
+    if (handDealer[1].suit=='diamonds' || handDealer[1].suit=='diamonds') {
+      $('#dealerCards .card').eq(1).css('color', 'red');
+    };
 
   //check for blackjack
   addPlayerOneTotal();
@@ -98,18 +122,28 @@ $('#dealButton').click(function() {
   if (handPlayerOneValue===21 && handDealerValue===21) {
     $('#playerOneHit').hide();
     $('#playerOneStand').hide();
+    $('#dealerCards h3.suit').eq(0).show();
+    $('#dealerCards h3.value').eq(0).show();
+    $('#dealerFirstCard').css('background-image', 'none');
     pushes +=1;
-    $('#pushesText').text(pushes);
+    $('#pushesText').text(pushes).css('color', 'red').css('font-weight', '700');
+    $('#dealButton').css('visibility', 'visible');;
   } else if (handDealerValue===21) {
     $('#playerOneHit').hide();
     $('#playerOneStand').hide();
+    $('#dealerCards h3.suit').eq(0).show();
+    $('#dealerCards h3.value').eq(0).show();
+    $('#dealerFirstCard').css('background-image', 'none');
     losses+=1;
-    $('#lossesText').text(losses);
+    $('#lossesText').text(losses).css('color', 'red').css('font-weight', '700');
+    $('#dealButton').css('visibility', 'visible');;
   } else if (handPlayerOneValue===21) {
     $('#playerOneHit').hide();
     $('#playerOneStand').hide();
+    $('h1').css('color', 'red');
     wins+=1;
-    $('#winsText').text(wins);
+    $('#winsText').text(wins).css('color', 'red').css('font-weight', '700');
+    $('#dealButton').css('visibility', 'visible');;
   }
 
 });
@@ -124,6 +158,10 @@ $('#playerOneHit').click(function() {
   $card.clone().css('display','inline-block').appendTo('#playerOneCards');
   $('#playerOneCards h3.suit').eq(handPlayerOne.length-1).text(handPlayerOne[handPlayerOne.length-1].suit);
   $('#playerOneCards h3.value').eq(handPlayerOne.length-1).text(handPlayerOne[handPlayerOne.length-1].value);
+  //change suit color
+  if (handPlayerOne[handPlayerOne.length-1].suit=='diamonds' || handPlayerOne[handPlayerOne.length-1].suit=='hearts') {
+    $('#playerOneCards .card').eq(handPlayerOne.length-1).css('color', 'red');
+  };
 
   //check for bust
   addPlayerOneTotal();
@@ -131,7 +169,8 @@ $('#playerOneHit').click(function() {
     $('#playerOneHit').hide();
     $('#playerOneStand').hide();
     losses+=1;
-    $('#lossesText').text(losses);
+    $('#lossesText').text(losses).css('color', 'red').css('font-weight', '700');
+    $('#dealButton').css('visibility', 'visible');;
   };
 
 });
@@ -146,35 +185,32 @@ $('#playerOneStand').click(function() {
   $('#dealerFirstCard').css('background-image', 'none');
   $('#dealerCards h3.suit').eq(0).show();
   $('#dealerCards h3.value').eq(0).show();
-  console.log("Player: "+handPlayerOneValue);
+  $('#dealButton').css('visibility', 'visible');
 
   //dealer's turn
   addDealerTotal();
-  if (handDealerValue<17) {
+  while (handDealerValue<17) {
     addCardDealer();
     addDealerTotal();
   };
+
 
 //check for the outcome
   addPlayerOneTotal();
   addDealerTotal();
   if (handDealerValue>21) {
     wins+=1;
-    $('#winsText').text(wins);
+    $('#winsText').text(wins).css('color', 'red').css('font-weight', '700');
   } else if (handPlayerOneValue==handDealerValue) {
     pushes +=1;
-    $('#pushesText').text(pushes);
+    $('#pushesText').text(pushes).css('color', 'red').css('font-weight', '700');
   } else if (handDealerValue>handPlayerOneValue) {
     losses+=1;
-    $('#lossesText').text(losses);
+    $('#lossesText').text(losses).css('color', 'red').css('font-weight', '700');
   } else if (handDealerValue<handPlayerOneValue) {
     wins+=1;
-    $('#winsText').text(wins);
+    $('#winsText').text(wins).css('color', 'red').css('font-weight', '700');
   }
-
-
-
-
 });
 
 //add card to dealer function
@@ -184,18 +220,20 @@ function addCardDealer() {
   $card.clone().css('display','inline-block').appendTo('#dealerCards');
   $('#dealerCards h3.suit').eq(handDealer.length-1).text(handDealer[handDealer.length-1].suit);
   $('#dealerCards h3.value').eq(handDealer.length-1).text(handDealer[handDealer.length-1].value);
+  if (handDealer[handDealer.length-1].suit=='diamonds' || handDealer[handDealer.length-1].suit=='hearts') {
+    $('#dealerCards .card').eq(handDealer.length-1).css('color', 'red');
+  };
 };
 //adding up Player One
 function addPlayerOneTotal() {
   handPlayerOneValue=0;
   var acePresentPlayerOne=false;
   for (var i=0;i<handPlayerOne.length;i++) {
-    if (handPlayerOne[i].value=='Jack' || handPlayerOne[i].value=='Queen' || handPlayerOne[i].value=='King') {
+    if (handPlayerOne[i].value=='J' || handPlayerOne[i].value=='Q' || handPlayerOne[i].value=='K') {
       handPlayerOneValue+=10;
-    } else if (handPlayerOne[i].value=='Ace' && 11+handPlayerOneValue>21) {
+    } else if (handPlayerOne[i].value=='A' && 11+handPlayerOneValue>21) {
       handPlayerOneValue+=1;
-      acePresentPlayerOne=true;
-    } else if (handPlayerOne[i].value=='Ace') {
+    } else if (handPlayerOne[i].value=='A') {
       handPlayerOneValue+=11;
       acePresentPlayerOne=true;
     } else {
@@ -212,12 +250,11 @@ function addDealerTotal() {
   var acePresentDealer=false;
   handDealerValue=0;
   for (var i=0; i<handDealer.length;i++) {
-    if (handDealer[i].value=='Jack' || handDealer[i].value=='Queen' ||  handDealer[i].value=='King') {
+    if (handDealer[i].value=='J' || handDealer[i].value=='Q' ||  handDealer[i].value=='K') {
       handDealerValue+=10;
-    } else if (handDealer[i].value=='Ace' && 11+handDealerValue>21) {
+    } else if (handDealer[i].value=='A' && 11+handDealerValue>21) {
       handDealerValue+=1;
-      acePresentDealer=true;
-    } else if (handDealer[i].value=='Ace') {
+    } else if (handDealer[i].value=='A') {
       handDealerValue+=11;
       acePresentDealer=true;
     } else {
@@ -227,26 +264,26 @@ function addDealerTotal() {
   if (acePresentDealer==true && handDealerValue>21) {
     handDealerValue=handDealerValue-10;
   };
-  console.log("Dealer: "+handDealerValue);
 };
 
+//hover over button effects
 $('#dealButton').mouseover(function () {
-  $('#dealButton').css('background-color', 'white');
+  $('#dealButton').css('background-color', 'rgba(255,255,255,.25)').css('color','rgba(0,129,10,1)');
 });
 $('#dealButton').mouseleave(function () {
-  $('#dealButton').css('background-color', 'rgba(0,129,10,1)');
+  $('#dealButton').css('background-color', 'rgba(0,129,10,1)').css('color', 'rgba(255,255,255,.25)');
 });
 $('#playerOneHit').mouseover(function () {
-  $('#playerOneHit').css('background-color', 'white');
+  $('#playerOneHit').css('background-color', 'rgba(255,255,255,.25)').css('color','rgba(0,129,10,1)');
 });
 $('#playerOneHit').mouseleave(function () {
-  $('#playerOneHit').css('background-color', 'rgba(0,129,10,1)');
+  $('#playerOneHit').css('background-color', 'rgba(0,129,10,1)').css('color', 'rgba(255,255,255,.25)');
 });
 $('#playerOneStand').mouseover(function () {
-  $('#playerOneStand').css('background-color', 'white');
+  $('#playerOneStand').css('background-color', 'rgba(255,255,255,.25)').css('color','rgba(0,129,10,1)');
 });
 $('#playerOneStand').mouseleave(function () {
-  $('#playerOneStand').css('background-color', 'rgba(0,129,10,1)');
+  $('#playerOneStand').css('background-color', 'rgba(0,129,10,1)').css('color', 'rgba(255,255,255,.25)');
 });
 
 

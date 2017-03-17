@@ -15,6 +15,9 @@
   </head>
   <body>
     <main>
+      <section class="rules">
+        <span>Dealer must draw to 16 and stand on all 17's</span>
+      </section>
       <section class="top">
         <div class="deckImage">
           <img src="img/card-back-red.png" alt="" class="deck">
@@ -40,18 +43,24 @@
             <h4>Pushes</h4>
             <h5 id="pushesText">0</h5>
           </div>
+          <div class="newShuffle">
+            <h6 id="newShuffle">New Shuffle</h6>
+          </div>
         </section>
       </section>
       <section class="middle">
         <h1>Blackjack</h1>
+        <p>Single Deck</p>
+        <button type="button" name="stand" class="stand" id="playerOneStand">Stand</button>
         <button type="button" name="Deal" id="dealButton">Deal</button>
+        <button type="button" name="hit" class="hit" id="playerOneHit">Hit Me!</button>
       </section>
       <section class="bottom">
         <section class="player playerOne">
           <h2>Player 1</h2>
           <div class="cardArea" id="playerOneCards"></div>
-          <button type="button" name="hit" class="hit" id="playerOneHit">Hit Me!</button>
-          <button type="button" name="stand" class="stand" id="playerOneStand">Stand</button>
+
+
         </section>
       </section>
     </main>
