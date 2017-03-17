@@ -57,6 +57,7 @@ var pushes=0;
 
 //deal the cards
 $('#dealButton').click(function() {
+  // reset things
   $('h1').css('color', 'rgba(255,255,255,.2)');
   $('.cardArea').empty();
   $('#playerOneHit').show();
@@ -68,7 +69,6 @@ $('#dealButton').click(function() {
   $('.newShuffle').css('visibility','hidden');
   handDealer=[];
   handPlayerOne=[];
-  console.log(shuffledCards.length);
   //check how much of deck is left
   if(shuffledCards.length<20) {
     deck_of_cards();
@@ -92,7 +92,7 @@ $('#dealButton').click(function() {
     $('#dealerFirstCard').eq(0).css('background-image', 'url(img/card-back-red.png)');
     //change suit color
     if (handDealer[0].suit=='diamonds' || handDealer[0].suit=='hearts') {
-      $('#dealerCards .card').eq(0).css('color', 'red');
+      $('#dealerCards .card').eq(1).css('color', 'red');
     };
 
 
@@ -103,7 +103,7 @@ $('#dealButton').click(function() {
     $('#playerOneCards h3.suit').eq(1).text(handPlayerOne[1].suit);
     $('#playerOneCards h3.value').eq(1).text(handPlayerOne[1].value);
     //change suit color
-    if (handPlayerOne[1].suit=='diamonds' || handPlayerOne[1].suit=='diamonds') {
+    if (handPlayerOne[1].suit=='diamonds' || handPlayerOne[1].suit=='hearts') {
       $('#playerOneCards .card').eq(1).css('color', 'red');
     };
     handDealer.push(shuffledCards[0]);
@@ -112,7 +112,7 @@ $('#dealButton').click(function() {
     $('#dealerCards h3.suit').eq(1).text(handDealer[1].suit);
     $('#dealerCards h3.value').eq(1).text(handDealer[1].value);
     //change suit color
-    if (handDealer[1].suit=='diamonds' || handDealer[1].suit=='diamonds') {
+    if (handDealer[1].suit=='diamonds' || handDealer[1].suit=='hearts') {
       $('#dealerCards .card').eq(1).css('color', 'red');
     };
 
