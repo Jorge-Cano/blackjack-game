@@ -20,11 +20,11 @@ padding-bottom: .5em;
 h3 {
 }
 h4 {
-  font-size: 2em;
+  font-size: 3em;
   font-weight: 700;
 }
 h5 {
-  font-size: 2em;
+  font-size: 3em;
   color: black;
 }
 h6 {
@@ -73,7 +73,7 @@ img.deck {
 }
 .cardArea {
   height: 13em;
-  width: 60em;
+  width: 56em;
 }
 section.middle {
   flex: 1 100%;
@@ -111,7 +111,7 @@ div.card {
 }
 .counters {
   padding-right: 2em;
-  width: 6em;
+  width: 8em;
 }
 button {
   color: rgba(255,255,255,.25);
