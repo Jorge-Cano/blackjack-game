@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Black Jack</title>
+    <title>Blackjack by Jacob Bodkin</title>
     <!-- CSS Reset -->
     <link rel="stylesheet" href="css/reset.css">
     <!-- Google Fonts -->
@@ -16,7 +16,7 @@
   <body>
     <main>
       <section class="rules">
-        <span>Dealer must draw to 16 and stand on all 17's</span>
+        <span>Dealer must draw on 16 and stand on all 17's</span>
       </section>
       <section class="top">
         <div class="deckImage">
@@ -31,24 +31,16 @@
           <h2>Dealer</h2>
         </section>
         <section class="counters">
-          <div class="wins">
-            <h4>Wins</h4>
-            <h5 id="winsText">0</h5>
-          </div>
-          <div class="losses">
-            <h4>Losses</h4>
-            <h5 id="lossesText">0</h5>
-          </div>
-          <div class="pushes">
-            <h4>Pushes</h4>
-            <h5 id="pushesText">0</h5>
-          </div>
-          <div class="newShuffle">
-            <h6 id="newShuffle">New Shuffle</h6>
+          <div class="purse">
+            <h4>Purse</h4>
+            <h5 id="purseText">100</h5>
           </div>
         </section>
       </section>
       <section class="middle">
+        <div class="newShuffle">
+          <h6 id="newShuffle">New Shuffle</h6>
+        </div>
         <h1>Blackjack</h1>
         <p>Single Deck</p>
         <button type="button" name="stand" class="stand" id="playerOneStand">Stand</button>

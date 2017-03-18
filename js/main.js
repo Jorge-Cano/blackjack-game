@@ -2,6 +2,8 @@ console.log('JS is working!');
 $(function() {
   $('#playerOneHit').hide();
   $('#playerOneStand').hide();
+  var purse=100;
+
 
 // Fisher-Yates Shuffle
 // http://stackoverflow.com/a/6274398
@@ -46,9 +48,6 @@ $(function() {
 var handDealer=[];
 var handPlayerOne=[];
 var $card=$('#deckCard');
-var wins=0;
-var losses=0;
-var pushes=0;
 
 
 
@@ -58,14 +57,13 @@ var pushes=0;
 //deal the cards
 $('#dealButton').click(function() {
   // reset things
+  console.log(purse);
   $('h1').css('color', 'rgba(255,255,255,.2)');
   $('.cardArea').empty();
   $('#playerOneHit').show();
   $('#playerOneStand').show();
   $('#dealButton').css('visibility', 'hidden');;
-  $('#pushesText').css('color', 'black').css('font-weight', '400');
-  $('#lossesText').css('color', 'black').css('font-weight', '400');
-  $('#winsText').css('color', 'black').css('font-weight', '400');
+  $('#purseText').css('color', 'black').css('font-weight', '400');
   $('.newShuffle').css('visibility','hidden');
   handDealer=[];
   handPlayerOne=[];
@@ -125,8 +123,7 @@ $('#dealButton').click(function() {
     $('#dealerCards h3.suit').eq(0).show();
     $('#dealerCards h3.value').eq(0).show();
     $('#dealerFirstCard').css('background-image', 'none');
-    pushes +=1;
-    $('#pushesText').text(pushes).css('color', 'red').css('font-weight', '700');
+    $('#purseText').text(purse).css('font-weight', '700');
     $('#dealButton').css('visibility', 'visible');;
   } else if (handDealerValue===21) {
     $('#playerOneHit').hide();
@@ -134,15 +131,18 @@ $('#dealButton').click(function() {
     $('#dealerCards h3.suit').eq(0).show();
     $('#dealerCards h3.value').eq(0).show();
     $('#dealerFirstCard').css('background-image', 'none');
-    losses+=1;
-    $('#lossesText').text(losses).css('color', 'red').css('font-weight', '700');
+    purse-=10;
+    $('#purseText').text(purse).css('color', 'blue').css('font-weight', '700');
     $('#dealButton').css('visibility', 'visible');;
   } else if (handPlayerOneValue===21) {
     $('#playerOneHit').hide();
     $('#playerOneStand').hide();
     $('h1').css('color', 'red');
-    wins+=1;
-    $('#winsText').text(wins).css('color', 'red').css('font-weight', '700');
+    $('#dealerCards h3.suit').eq(0).show();
+    $('#dealerCards h3.value').eq(0).show();
+    $('#dealerFirstCard').css('background-image', 'none');
+    purse+=15;
+    $('#purseText').text(purse).css('color', 'red').css('font-weight', '700');
     $('#dealButton').css('visibility', 'visible');;
   }
 
@@ -168,8 +168,8 @@ $('#playerOneHit').click(function() {
   if (handPlayerOneValue>21) {
     $('#playerOneHit').hide();
     $('#playerOneStand').hide();
-    losses+=1;
-    $('#lossesText').text(losses).css('color', 'red').css('font-weight', '700');
+    purse-=10;
+    $('#purseText').text(purse).css('color', 'blue').css('font-weight', '700');
     $('#dealButton').css('visibility', 'visible');;
   };
 
@@ -192,6 +192,7 @@ $('#playerOneStand').click(function() {
   while (handDealerValue<17) {
     addCardDealer();
     addDealerTotal();
+
   };
 
 
@@ -199,17 +200,16 @@ $('#playerOneStand').click(function() {
   addPlayerOneTotal();
   addDealerTotal();
   if (handDealerValue>21) {
-    wins+=1;
-    $('#winsText').text(wins).css('color', 'red').css('font-weight', '700');
+    purse+=10;
+    $('#purseText').text(purse).css('color', 'red').css('font-weight', '700');
   } else if (handPlayerOneValue==handDealerValue) {
-    pushes +=1;
-    $('#pushesText').text(pushes).css('color', 'red').css('font-weight', '700');
+    $('#purseText').text(purse).css('font-weight', '700');
   } else if (handDealerValue>handPlayerOneValue) {
-    losses+=1;
-    $('#lossesText').text(losses).css('color', 'red').css('font-weight', '700');
+    purse-=10;
+    $('#purseText').text(purse).css('color', 'blue').css('font-weight', '700');
   } else if (handDealerValue<handPlayerOneValue) {
-    wins+=1;
-    $('#winsText').text(wins).css('color', 'red').css('font-weight', '700');
+    purse+=10;
+    $('#purseText').text(purse).css('color', 'red').css('font-weight', '700');
   }
 });
 
