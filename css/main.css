@@ -42,8 +42,8 @@ p {
   font-size: 3em;
 }
 span {
-  font-size: 2em;
-  font-weight: 700;
+  font-size: 1em;
+  font-weight: 400;
   text-transform: uppercase;
 }
 section.rules {
