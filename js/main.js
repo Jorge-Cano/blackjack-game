@@ -123,7 +123,7 @@ $('#dealButton').click(function() {
     $('#dealerCards h3.suit').eq(0).show();
     $('#dealerCards h3.value').eq(0).show();
     $('#dealerFirstCard').css('background-image', 'none');
-    $('#purseText').text(purse).css('font-weight', '700');
+    $('#purseText').text(purse).css('color','white').css('font-weight', '700');
     $('#dealButton').css('visibility', 'visible');;
   } else if (handDealerValue===21) {
     $('#playerOneHit').hide();
@@ -132,17 +132,17 @@ $('#dealButton').click(function() {
     $('#dealerCards h3.value').eq(0).show();
     $('#dealerFirstCard').css('background-image', 'none');
     purse-=10;
-    $('#purseText').text(purse).css('color', 'blue').css('font-weight', '700');
+    $('#purseText').text(purse).css('color', 'red').css('font-weight', '700');
     $('#dealButton').css('visibility', 'visible');;
   } else if (handPlayerOneValue===21) {
     $('#playerOneHit').hide();
     $('#playerOneStand').hide();
-    $('h1').css('color', 'red');
+    $('h1').css('color', 'black');
     $('#dealerCards h3.suit').eq(0).show();
     $('#dealerCards h3.value').eq(0).show();
     $('#dealerFirstCard').css('background-image', 'none');
     purse+=15;
-    $('#purseText').text(purse).css('color', 'red').css('font-weight', '700');
+    $('#purseText').text(purse).css('color', 'black').css('font-weight', '700');
     $('#dealButton').css('visibility', 'visible');;
   }
 
@@ -168,8 +168,11 @@ $('#playerOneHit').click(function() {
   if (handPlayerOneValue>21) {
     $('#playerOneHit').hide();
     $('#playerOneStand').hide();
+    $('#dealerCards h3.suit').eq(0).show();
+    $('#dealerCards h3.value').eq(0).show();
+    $('#dealerFirstCard').css('background-image', 'none');
     purse-=10;
-    $('#purseText').text(purse).css('color', 'blue').css('font-weight', '700');
+    $('#purseText').text(purse).css('color', 'red').css('font-weight', '700');
     $('#dealButton').css('visibility', 'visible');;
   };
 
@@ -201,15 +204,15 @@ $('#playerOneStand').click(function() {
   addDealerTotal();
   if (handDealerValue>21) {
     purse+=10;
-    $('#purseText').text(purse).css('color', 'red').css('font-weight', '700');
+    $('#purseText').text(purse).css('color', 'black').css('font-weight', '700');
   } else if (handPlayerOneValue==handDealerValue) {
-    $('#purseText').text(purse).css('font-weight', '700');
+    $('#purseText').text(purse).css('color','white').css('font-weight', '700');
   } else if (handDealerValue>handPlayerOneValue) {
     purse-=10;
-    $('#purseText').text(purse).css('color', 'blue').css('font-weight', '700');
+    $('#purseText').text(purse).css('color', 'red').css('font-weight', '700');
   } else if (handDealerValue<handPlayerOneValue) {
     purse+=10;
-    $('#purseText').text(purse).css('color', 'red').css('font-weight', '700');
+    $('#purseText').text(purse).css('color', 'black').css('font-weight', '700');
   }
 });
 
