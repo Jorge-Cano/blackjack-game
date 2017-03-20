@@ -15,7 +15,6 @@ h1 {
 h2 {
 font-weight: 700;
 font-size: 3em;
-padding-bottom: .5em;
 }
 h3 {
 }
@@ -25,7 +24,6 @@ h4 {
 }
 h5 {
   font-size: 3em;
-  color: black;
 }
 h6 {
   font-size: 3em;
@@ -112,6 +110,9 @@ div.card {
 #purseText {
   display: inline;
 }
+#outcome {
+  word-wrap: normal;
+}
 .counters {
   padding-right: 2em;
   width: 8em;
@@ -122,12 +123,18 @@ button {
   border-radius: 10px;
   border-width: medium;
   border-style: solid;
-  border-color: rgba(255,255,255,.25);
+  border-color: black;
+  color: black;
   font-family: 'Cinzel', serif;
-  font-size: 1.5em;
+  font-size: 2.3em;
   cursor: pointer;
   cursor: hand;
   margin-bottom: .5em;
+  margin-top: -.5em;
+}
+button:hover {
+  border-color: rgba(255,255,255,.25);
+  color: rgba(255,255,255,.25);
 }
 .value {
   font-size: 7em;

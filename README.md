@@ -13,7 +13,8 @@ Installation:
 No installation, just follow the link.
 
 Unsolved Problems:
-No unsolved problems, just a to do list.
+-getting timeout to work between dealer cards
+
 
 To Do List:
 -Make responsive

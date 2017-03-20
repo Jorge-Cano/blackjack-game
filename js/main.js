@@ -1,4 +1,3 @@
-console.log('JS is working!');
 $(function() {
   $('#playerOneHit').hide();
   $('#playerOneStand').hide();
@@ -63,8 +62,9 @@ $('#dealButton').click(function() {
   $('#playerOneHit').show();
   $('#playerOneStand').show();
   $('#dealButton').css('visibility', 'hidden');;
-  $('#purseText').css('color', 'black').css('font-weight', '400');
+  $('#purseText').css('color', 'rgba(255,255,255,.25)').css('font-weight', '400');
   $('.newShuffle').css('visibility','hidden');
+  $('#outcome').text('');
   handDealer=[];
   handPlayerOne=[];
   //check how much of deck is left
@@ -124,7 +124,8 @@ $('#dealButton').click(function() {
     $('#dealerCards h3.value').eq(0).show();
     $('#dealerFirstCard').css('background-image', 'none');
     $('#purseText').text(purse).css('color','white').css('font-weight', '700');
-    $('#dealButton').css('visibility', 'visible');;
+    $('#dealButton').css('visibility', 'visible');
+    $('#outcome').text('Draw').css('color','white');
   } else if (handDealerValue===21) {
     $('#playerOneHit').hide();
     $('#playerOneStand').hide();
@@ -133,7 +134,8 @@ $('#dealButton').click(function() {
     $('#dealerFirstCard').css('background-image', 'none');
     purse-=10;
     $('#purseText').text(purse).css('color', 'red').css('font-weight', '700');
-    $('#dealButton').css('visibility', 'visible');;
+    $('#dealButton').css('visibility', 'visible');
+    $('#outcome').text('Lose').css('color','red');
   } else if (handPlayerOneValue===21) {
     $('#playerOneHit').hide();
     $('#playerOneStand').hide();
@@ -143,8 +145,9 @@ $('#dealButton').click(function() {
     $('#dealerFirstCard').css('background-image', 'none');
     purse+=15;
     $('#purseText').text(purse).css('color', 'black').css('font-weight', '700');
-    $('#dealButton').css('visibility', 'visible');;
-  }
+    $('#dealButton').css('visibility', 'visible');
+    $('#outcome').text('Black jack!').css('color','black');
+  };
 
 });
 
@@ -173,7 +176,8 @@ $('#playerOneHit').click(function() {
     $('#dealerFirstCard').css('background-image', 'none');
     purse-=10;
     $('#purseText').text(purse).css('color', 'red').css('font-weight', '700');
-    $('#dealButton').css('visibility', 'visible');;
+    $('#dealButton').css('visibility', 'visible');
+    $('#outcome').text('Bust').css('color','red');
   };
 
 });
@@ -205,14 +209,18 @@ $('#playerOneStand').click(function() {
   if (handDealerValue>21) {
     purse+=10;
     $('#purseText').text(purse).css('color', 'black').css('font-weight', '700');
+    $('#outcome').text('Win').css('color','black');
   } else if (handPlayerOneValue==handDealerValue) {
     $('#purseText').text(purse).css('color','white').css('font-weight', '700');
+    $('#outcome').text('Draw').css('color','white');
   } else if (handDealerValue>handPlayerOneValue) {
     purse-=10;
     $('#purseText').text(purse).css('color', 'red').css('font-weight', '700');
+    $('#outcome').text('Lose').css('color','red');
   } else if (handDealerValue<handPlayerOneValue) {
     purse+=10;
     $('#purseText').text(purse).css('color', 'black').css('font-weight', '700');
+    $('#outcome').text('Win').css('color','black')
   }
 });
 
@@ -269,25 +277,6 @@ function addDealerTotal() {
   };
 };
 
-//hover over button effects
-$('#dealButton').mouseover(function () {
-  $('#dealButton').css('background-color', 'rgba(255,255,255,.25)').css('color','rgba(0,129,10,1)');
-});
-$('#dealButton').mouseleave(function () {
-  $('#dealButton').css('background-color', 'rgba(0,129,10,1)').css('color', 'rgba(255,255,255,.25)');
-});
-$('#playerOneHit').mouseover(function () {
-  $('#playerOneHit').css('background-color', 'rgba(255,255,255,.25)').css('color','rgba(0,129,10,1)');
-});
-$('#playerOneHit').mouseleave(function () {
-  $('#playerOneHit').css('background-color', 'rgba(0,129,10,1)').css('color', 'rgba(255,255,255,.25)');
-});
-$('#playerOneStand').mouseover(function () {
-  $('#playerOneStand').css('background-color', 'rgba(255,255,255,.25)').css('color','rgba(0,129,10,1)');
-});
-$('#playerOneStand').mouseleave(function () {
-  $('#playerOneStand').css('background-color', 'rgba(0,129,10,1)').css('color', 'rgba(255,255,255,.25)');
-});
 
 
 
