@@ -196,9 +196,23 @@ $('#playerOneStand').click(function() {
 
   //dealer's turn
   addDealerTotal();
-  while (handDealerValue<17) {
-    addCardDealer();
-    addDealerTotal();
+  while (handDealerValue<=17) {
+
+    var acePresentDealer=false
+    for (var i=0; i<handDealer.length; i++) {
+      if (handDealer[i].value=='A') {
+        acePresentDealer=true;
+      };
+    };
+    if (acePresentDealer==true && handDealerValue==17) {
+      addCardDealer();
+      addDealerTotal();
+    } else if (handDealerValue<17) {
+      addCardDealer();
+      addDealerTotal();
+    } else {
+      break;
+    };
 
   };
 
